@@ -1,0 +1,6 @@
+scripts/*
+public/*
+config/*
+.eslintrc.js
+postcss.config.js
+node_modules/*
