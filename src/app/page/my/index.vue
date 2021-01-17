@@ -1,7 +1,7 @@
 <template>
     <div class="my">
         <div :class="['ball', {'active' : flag}]" ref="bal" @click="handleShowLine">
-<!--            <div class="inner"></div>-->
+            <div class="inner"></div>
         </div>
         <button @click="choose">点击触发小球动画</button>
     </div>
@@ -39,20 +39,20 @@
         height: 100%;
 
         .ball {
-            transition: all .5s linear;
+            transition: all .5s cubic-bezier(0,-0.3, 1, 0.17);
             position: absolute;
             top: 100px;
-            left: 600px;
-            width: 50px;
+            /*left: 600px;*/
+           /* width: 50px;
             height: 50px;
-            background: #000;
-            border-radius: 50%;
+            background: #fff; */
+            /*border-radius: 50%;*/
             /*transform: translate3d(0,0,0);*/
 
             &.active {
                 /*top: 1100px;*/
                 top: 1100px;
-                left: 100px;
+                /*left: 100px;*/
                 /*transform: translate3d(-300px, 1100px, 0);*/
                 .inner {
                     left: 100px;
@@ -60,9 +60,9 @@
             }
 
             .inner {
+                transition: all .5s linear;
                 position: absolute;
                 left: 600px;
-                transition: all .5s linear;
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
