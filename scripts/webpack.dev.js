@@ -11,6 +11,10 @@ module.exports = merge(common, {
 	mode: "development",
 	devtool: "cheap-module-source-map",
 	// 监测到变化会强制刷新页面
+	output: {
+		filename: 'js/[name].[fullhash].js',
+		path: path.resolve(__dirname, 'build')
+	},
 	devServer: {
 		contentBase: path.resolve(__dirname, "../public"),
 		port: 9001,
@@ -20,8 +24,8 @@ module.exports = merge(common, {
 		...devServer
 	},
     plugins: [
-        new webpack.HotModuleReplacementPlugin(), 
-        new FriendlyErrorsWebpackPlugin(), 
+        new webpack.HotModuleReplacementPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
        // new ErrorOverlayPlugin()
     ]
 })

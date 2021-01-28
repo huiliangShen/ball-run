@@ -6,10 +6,6 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
-    output: {
-        filename: 'js/[name].[fullhash].js',
-        path: path.resolve(__dirname, 'build')
-    },
     resolve: {
         extensions: ['.jsx', '.js', '.json', '.vue'],
         alias: {
@@ -90,7 +86,7 @@ module.exports = {
         // need update
         new HtmlWebpackPlugin({
             // auto insert entry url to index.html
-            template: path.resolve(__dirname, '../public/index.html'),
+            template: path.resolve(__dirname, '../public/index.ejs'),
             filename: "index.html"
         }),
         new VueLoaderPlugin(),

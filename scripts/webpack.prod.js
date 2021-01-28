@@ -30,7 +30,7 @@ module.exports = merge(common, {
 			filename: "css/[name].[contenthash].css",
 			chunkFilename: "css/[id].[contenthash].css"
 		}),
-		new CompressionPlugin()
+		// new CompressionPlugin()
 	],
 	optimization: {
 		minimize: true,
