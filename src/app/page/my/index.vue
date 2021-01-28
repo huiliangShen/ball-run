@@ -1,8 +1,9 @@
 <template>
     <div class="my">
-        <div :class="['ball', {'active' : flag}]" ref="bal" @click="handleShowLine">
+        <div :class="['ball']" ref="ball" @click="handleShowLine" v-show="flag">
             <div class="inner"></div>
         </div>
+<!--        <div class="line"></div>-->
         <button @click="choose">点击触发小球动画</button>
     </div>
 </template>
@@ -20,16 +21,33 @@
                 this.showLine = true
             },
             choose() {
-                this.flag = !this.flag
+                // this.flag = !this.flag
+                // this.$refs.ball.style.display = 'inline-block'
+                this.$refs.ball.style.top = `${50}px`
+                this.$refs.ball.children[0].style.left = `${300}px`
+                this.flag = true
+
+                this.$nextTick(() => {
+                    // setTimeout(() => {
+                    this.$refs.ball.style.top = `${505}px`
+                    this.$refs.ball.children[0].style.left = `${50}px`
+                    // })
+                })
             },
             transitionEnd(e) {
+                console.log(e)
+                if (e.target.classList.contains('inner')) {
+                    // this.$refs.ball.style.display = 'none'
+                    this.flag = false
+                }
+                // this.flag = false
             }
         },
         beforeDestroy() {
-            this.$refs.bal.removeEventListener('transitionend', this.transitionEnd, false)
+            this.$refs.ball.removeEventListener('transitionend', this.transitionEnd, false)
         },
         mounted() {
-            this.$refs.bal.addEventListener('transitionend', this.transitionEnd, false)
+            this.$refs.ball.addEventListener('transitionend', this.transitionEnd, false)
         }
     }
 </script>
@@ -38,31 +56,38 @@
     .my {
         height: 100%;
 
+        .line {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 99px;
+            width: 1px;
+            background: blue;
+        }
+
         .ball {
-            transition: all .5s cubic-bezier(0,-0.3, 1, 0.17);
+            /*display: none;*/
             position: absolute;
-            top: 100px;
-            /*left: 600px;*/
-           /* width: 50px;
-            height: 50px;
-            background: #fff; */
-            /*border-radius: 50%;*/
-            /*transform: translate3d(0,0,0);*/
+            transition: all .5s cubic-bezier(.19, -0.14, .82, 0);
+            /*transform: translate3d(0,100px,0);*/
+            /*top: 100px;*/
 
             &.active {
+                /*transform: translate3d(0, 1100px, 0);*/
                 /*top: 1100px;*/
-                top: 1100px;
-                /*left: 100px;*/
-                /*transform: translate3d(-300px, 1100px, 0);*/
+
                 .inner {
-                    left: 100px;
+                    /*transform: translate3d(100px, 0, 0);*/
+                    /*left: 100px;*/
                 }
             }
 
             .inner {
-                transition: all .5s linear;
                 position: absolute;
-                left: 600px;
+                /*transition-timing-function: linear;*/
+                transition: all .5s linear;
+                /*transform: translate3d(600px, 0, 0);*/
+                /*left: 600px;*/
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
