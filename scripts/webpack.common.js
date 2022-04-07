@@ -95,10 +95,6 @@ module.exports = {
             extensions: ['js', 'vue'],
            // files: [path.resolve(__dirname, '../src')],
             emitError: true
-        }),
-        new MiniCssExtractPlugin({
-            filename: "css/[name].[fullhash].css",
-            chunkFilename: "css/[id].[fullhash].css"
         })
     ]
 }

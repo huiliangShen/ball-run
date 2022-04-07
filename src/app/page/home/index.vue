@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import '@/index.less'
     export default {
         methods: {
             go() {

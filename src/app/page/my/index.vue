@@ -10,6 +10,7 @@
 </template>
 
 <script>
+    import '@/index.less'
     // import VLine from '@/app/components/line'
     export default {
         data() {
